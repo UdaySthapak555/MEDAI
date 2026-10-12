@@ -1,0 +1,440 @@
+/* =========================================
+   MEDAI - Results Page
+   ========================================= */
+
+.results-page {
+  min-height: 100vh;
+  padding: 28px 7%;
+  background:
+    radial-gradient(circle at 75% 15%, rgba(41, 191, 255, 0.06), transparent 30%),
+    #060b12;
+  color: #f4f8fc;
+}
+
+
+/* =========================================
+   Back Button
+   ========================================= */
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #7f9bb5;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  transition: 0.2s ease;
+}
+
+.back-button:hover {
+  color: #51d2ff;
+}
+
+
+/* =========================================
+   Header
+   ========================================= */
+
+.results-header {
+  margin-top: 55px;
+  margin-bottom: 38px;
+}
+
+.page-overline {
+  display: block;
+
+  color: #42c7f5;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  margin-bottom: 10px;
+}
+
+.results-header h1 {
+  margin: 0;
+
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 700;
+
+  letter-spacing: -1.5px;
+}
+
+.results-header p {
+  margin-top: 14px;
+
+  color: #71879e;
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   Status Card
+   ========================================= */
+
+.result-status-card {
+  display: flex;
+  align-items: center;
+
+  gap: 22px;
+
+  padding: 28px 30px;
+
+  border: 1px solid rgba(56, 207, 255, 0.18);
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(15, 50, 67, 0.9),
+      rgba(8, 20, 29, 0.95)
+    );
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.25),
+    inset 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.result-status-icon {
+  width: 68px;
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  color: #45e0a0;
+
+  background: rgba(41, 211, 145, 0.08);
+  border: 1px solid rgba(41, 211, 145, 0.18);
+}
+
+.result-label {
+  display: block;
+
+  color: #698198;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1.6px;
+}
+
+.result-status-card h2 {
+  margin: 5px 0 3px;
+
+  font-size: 30px;
+  letter-spacing: 0.5px;
+
+  color: #4ce0a1;
+}
+
+.result-status-card p {
+  margin: 0;
+
+  color: #72889c;
+  font-size: 13px;
+}
+
+.confidence-box {
+  margin-left: auto;
+
+  min-width: 120px;
+
+  padding: 15px 18px;
+
+  border-radius: 14px;
+
+  background: rgba(4, 13, 21, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  text-align: center;
+}
+
+.confidence-box span {
+  display: block;
+
+  color: #698198;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.confidence-box strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #5ed7ff;
+
+  font-size: 25px;
+}
+
+
+/* =========================================
+   Section
+   ========================================= */
+
+.results-section {
+  margin-top: 45px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.section-heading h2 {
+  margin: 4px 0 0;
+
+  font-size: 25px;
+}
+
+.section-heading > svg {
+  color: #49cdf7;
+}
+
+
+/* =========================================
+   Parameter Grid
+   ========================================= */
+
+.parameter-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+}
+
+.parameter-card {
+  position: relative;
+
+  padding: 23px;
+
+  min-height: 145px;
+
+  border-radius: 18px;
+
+  background: #0a1119;
+
+  border: 1px solid rgba(255, 255, 255, 0.065);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.parameter-card:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(65, 204, 255, 0.25);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.parameter-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 12px;
+
+  color: #4ed2fb;
+
+  background: rgba(45, 199, 246, 0.08);
+}
+
+.parameter-card span {
+  display: block;
+
+  color: #668096;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1.4px;
+}
+
+.parameter-card strong {
+  display: inline-block;
+
+  margin-top: 7px;
+
+  font-size: 25px;
+
+  font-weight: 650;
+
+  color: #f3f8fc;
+}
+
+.parameter-card small {
+  margin-left: 6px;
+
+  color: #60778c;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   Screening Summary
+   ========================================= */
+
+.report-summary-card {
+  display: flex;
+  align-items: center;
+
+  gap: 17px;
+
+  margin-top: 38px;
+  padding: 23px 25px;
+
+  border-radius: 18px;
+
+  background: rgba(9, 18, 27, 0.9);
+
+  border: 1px solid rgba(63, 222, 161, 0.12);
+}
+
+.summary-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  color: #45dfa0;
+
+  background: rgba(52, 220, 158, 0.08);
+}
+
+.report-summary-card h3 {
+  margin: 5px 0;
+
+  font-size: 17px;
+}
+
+.report-summary-card p {
+  margin: 0;
+
+  color: #71879a;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   Disclaimer
+   ========================================= */
+
+.medical-disclaimer {
+  margin-top: 18px;
+  margin-bottom: 40px;
+
+  padding: 20px 23px;
+
+  border-radius: 15px;
+
+  background: rgba(10, 16, 24, 0.7);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.medical-disclaimer strong {
+  display: block;
+
+  color: #f0b85a;
+
+  font-size: 13px;
+
+  margin-bottom: 7px;
+}
+
+.medical-disclaimer p {
+  margin: 0;
+
+  color: #65798c;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   Responsive
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  .results-page {
+    padding: 25px 5%;
+  }
+
+  .parameter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .results-page {
+    padding: 22px 20px;
+  }
+
+  .results-header {
+    margin-top: 40px;
+  }
+
+  .results-header h1 {
+    font-size: 34px;
+  }
+
+  .result-status-card {
+    flex-wrap: wrap;
+  }
+
+  .confidence-box {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .parameter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .report-summary-card {
+    align-items: flex-start;
+  }
+}

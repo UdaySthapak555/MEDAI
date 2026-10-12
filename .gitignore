@@ -1,0 +1,46 @@
+﻿# Dependencies and Python environments
+node_modules/
+.venv/
+venv/
+env/
+
+# Python cache and test/tool output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Build and coverage output
+build/
+dist/
+out/
+coverage/
+
+# Environment files and common credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+.secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Uploaded reports and user data
+backend/uploads/
+
+# Temporary and log files
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
