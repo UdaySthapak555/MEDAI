@@ -33,6 +33,16 @@ coverage/
 # Uploaded reports and user data
 backend/uploads/
 
+# Local source datasets and fitted ML artifacts (do not publish)
+/datasets/raw/
+/backend/artifacts/*
+!/backend/artifacts/indicphi_document_type/
+/backend/artifacts/indicphi_document_type/*
+!/backend/artifacts/indicphi_document_type/logistic_regression.joblib
+
+# Browser profiles created for local UI review can contain session data
+/frontend/.ui-review/
+
 # Temporary and log files
 *.tmp
 *.temp

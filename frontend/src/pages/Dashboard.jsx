@@ -1,279 +1,116 @@
 import { Link } from "react-router-dom";
 import {
   Activity,
-  Bell,
-  ChevronRight,
-  Clock3,
+  ArrowUpRight,
   FileText,
   HeartPulse,
-  LayoutDashboard,
-  MessageSquare,
-  Settings,
+  MessageSquareText,
   ShieldCheck,
   Upload,
 } from "lucide-react";
 
-const recentReports = [
-  {
-    name: "Complete Blood Count",
-    date: "Today, 10:42 AM",
-    status: "Normal",
-    type: "CBC",
-  },
-  {
-    name: "Lipid Profile",
-    date: "Yesterday, 04:18 PM",
-    status: "Review",
-    type: "LIPID",
-  },
-  {
-    name: "Liver Function Test",
-    date: "Sep 28, 09:31 AM",
-    status: "Normal",
-    type: "LFT",
-  },
-];
+function hasStoredAnalysis() {
+  try {
+    return Boolean(sessionStorage.getItem("medai_result"));
+  } catch {
+    return false;
+  }
+}
 
 function Dashboard() {
+  const hasAnalysis = hasStoredAnalysis();
+
   return (
-    <div className="app-shell">
-      {/* Sidebar */}
-      <aside className="sidebar">
-        <div className="brand">
-          <div className="brand-icon">
-            <HeartPulse size={22} />
-          </div>
+    <div className="dashboard-page">
+      <header className="dashboard-page-header">
+        <div>
+          <span className="page-eyebrow">YOUR REPORT WORKSPACE</span>
+          <h1 className="page-title">Dashboard</h1>
+        </div>
+        <Link to="/assistant" className="secondary-button dashboard-assistant-link">
+          <MessageSquareText size={17} />
+          Health Assistant
+        </Link>
+      </header>
 
-          <div>
-            <h2>MEDAI</h2>
-            <span>Intelligent Health</span>
+      <section className="dashboard-hero surface-card" aria-labelledby="dashboard-hero-title">
+        <div className="dashboard-hero-content">
+          <span className="dashboard-kicker"><Activity size={14} /> AI-POWERED REPORT ANALYSIS</span>
+          <h2 id="dashboard-hero-title">
+            Your medical reports,<br />
+            <span>explained. Simplified.</span>
+          </h2>
+          <p>
+            Explore supported values and document categories from a report, with
+            clear educational context. Results may be incomplete and are not a diagnosis.
+          </p>
+          <div className="dashboard-hero-actions">
+            <Link to="/upload" className="primary-button">
+              <Upload size={17} />
+              Analyze a Report
+              <ArrowUpRight size={16} />
+            </Link>
+            <Link to="/assistant" className="dashboard-text-link">
+              Explore health topics
+              <ArrowUpRight size={15} />
+            </Link>
           </div>
         </div>
-
-        <div className="nav-section">
-          <p className="nav-label">WORKSPACE</p>
-
-          <button className="nav-item active">
-            <LayoutDashboard size={19} />
-            <span>Dashboard</span>
-          </button>
-
-          <button className="nav-item">
-            <FileText size={19} />
-            <span>Reports</span>
-          </button>
-
-          <button className="nav-item">
-            <MessageSquare size={19} />
-            <span>AI Assistant</span>
-          </button>
-
-          <button className="nav-item">
-            <Clock3 size={19} />
-            <span>History</span>
-          </button>
-        </div>
-
-        <div className="nav-section settings-section">
-          <p className="nav-label">SYSTEM</p>
-
-          <button className="nav-item">
-            <Settings size={19} />
-            <span>Settings</span>
-          </button>
-
-          <button className="nav-item">
-            <ShieldCheck size={19} />
-            <span>Privacy & Security</span>
-          </button>
-        </div>
-
-        <div className="sidebar-bottom">
-          <div className="secure-badge">
-            <ShieldCheck size={17} />
-
-            <div>
-              <strong>Secure Workspace</strong>
-              <span>Your data stays protected</span>
-            </div>
+        <div className="dashboard-hero-art" aria-hidden="true">
+          <div className="dashboard-art-halo" />
+          <div className="dashboard-art-card dashboard-art-card-back"><Activity size={20} /></div>
+          <div className="dashboard-art-card dashboard-art-card-front">
+            <span className="dashboard-art-card-icon"><FileText size={19} /></span>
+            <span className="dashboard-art-line dashboard-art-line-wide" />
+            <span className="dashboard-art-line" />
+            <span className="dashboard-art-value"><HeartPulse size={16} /> Report insights</span>
           </div>
+          <span className="dashboard-art-spark dashboard-art-spark-one" />
+          <span className="dashboard-art-spark dashboard-art-spark-two" />
+        </div>
+      </section>
 
-          <div className="profile">
-            <div className="avatar">U</div>
+      <section className="dashboard-capabilities" aria-label="MEDAI prototype capabilities">
+        <article className="dashboard-capability surface-card">
+          <span className="dashboard-capability-icon orange"><Upload size={19} /></span>
+          <h2>Report upload</h2>
+          <p>Analyze PDF, PNG, or JPEG reports up to 10 MB.</p>
+        </article>
+        <article className="dashboard-capability surface-card">
+          <span className="dashboard-capability-icon yellow"><Activity size={19} /></span>
+          <h2>Supported lab markers</h2>
+          <p>View up to six recognized values. Missing or unclear results stay unavailable.</p>
+        </article>
+        <article className="dashboard-capability surface-card">
+          <span className="dashboard-capability-icon peach"><ShieldCheck size={19} /></span>
+          <h2>Prototype classification</h2>
+          <p>Document categories use a synthetic English dataset and are not validated on real reports.</p>
+        </article>
+      </section>
 
-            <div className="profile-info">
-              <strong>Uday</strong>
-              <span>Personal Workspace</span>
-            </div>
-
-            <ChevronRight size={17} />
+      <section className="dashboard-activity surface-card" aria-labelledby="dashboard-history-title">
+        <div className="dashboard-activity-icon"><FileText size={20} /></div>
+        <div className="dashboard-activity-copy">
+          <span className="page-eyebrow">REPORT ACTIVITY</span>
+          <h2 id="dashboard-history-title">Report history is unavailable</h2>
+          <p>
+            {hasAnalysis
+              ? "MEDAI does not keep report history or aggregate statistics. Your latest analysis is temporarily available in this browser session."
+              : "MEDAI does not keep report history or aggregate statistics. Analyze a report to view its result in this session."}
+          </p>
+          <div className="dashboard-activity-actions">
+            <Link to="/upload" className="primary-button">
+              <Upload size={16} />
+              Analyze a Report
+            </Link>
+            {hasAnalysis && (
+              <Link to="/results" className="dashboard-text-link">
+                View latest result <ArrowUpRight size={15} />
+              </Link>
+            )}
           </div>
         </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className="main-content">
-        {/* Top Navigation */}
-        <header className="topbar">
-          <div>
-            <span className="page-overline">HEALTH INTELLIGENCE</span>
-            <h1>Dashboard</h1>
-          </div>
-
-          <div className="topbar-actions">
-            <button className="icon-button">
-              <Bell size={19} />
-              <span className="notification-dot"></span>
-            </button>
-
-            <div className="top-profile">
-              <div className="avatar small">U</div>
-
-              <div>
-                <strong>Uday</strong>
-                <span>Personal</span>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Welcome Section */}
-        <section className="welcome-section">
-          <div>
-            <p className="greeting">Good evening, Uday</p>
-
-            <h2>Your health, intelligently analyzed.</h2>
-
-            <p className="welcome-description">
-              Upload a medical report and let MEDAI transform complex medical
-              information into clear, understandable insights.
-            </p>
-          </div>
-
-          <div className="health-orb">
-            <div className="orb-ring ring-one"></div>
-            <div className="orb-ring ring-two"></div>
-
-            <Activity size={28} />
-          </div>
-        </section>
-
-        {/* Upload Card */}
-        <section className="upload-card">
-          <div className="upload-glow"></div>
-
-          <div className="upload-icon">
-            <Upload size={24} />
-          </div>
-
-          <div className="upload-content">
-            <span className="card-eyebrow">AI REPORT ANALYSIS</span>
-
-            <h3>Analyze a medical report</h3>
-
-            <p>
-              Upload your PDF or medical report image. MEDAI will extract,
-              classify and analyze the information.
-            </p>
-          </div>
-
-          <Link to="/upload" className="primary-button">
-          <Upload size={18} />
-          Upload Report
-          </Link>
-          <span className="upload-hint">
-            PDF, PNG or JPG · Maximum 10 MB
-          </span>
-        </section>
-
-        {/* Statistics */}
-        <section className="stats-grid">
-          <div className="stat-card">
-            <div className="stat-icon blue">
-              <FileText size={20} />
-            </div>
-
-            <div>
-              <span>Total Reports</span>
-              <strong>24</strong>
-            </div>
-
-            <small>+3 this month</small>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-icon green">
-              <Activity size={20} />
-            </div>
-
-            <div>
-              <span>Reports Analyzed</span>
-              <strong>21</strong>
-            </div>
-
-            <small>87.5% processed</small>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-icon purple">
-              <ShieldCheck size={20} />
-            </div>
-
-            <div>
-              <span>Normal Results</span>
-              <strong>17</strong>
-            </div>
-
-            <small>81% of analyzed</small>
-          </div>
-        </section>
-
-        {/* Recent Reports */}
-        <section className="reports-section">
-          <div className="section-header">
-            <div>
-              <span className="card-eyebrow">YOUR ANALYSIS</span>
-              <h3>Recent reports</h3>
-            </div>
-
-            <button className="view-all">
-              View all
-              <ChevronRight size={16} />
-            </button>
-          </div>
-
-          <div className="reports-list">
-            {recentReports.map((report) => (
-              <div className="report-row" key={report.name}>
-                <div className="report-file-icon">
-                  <FileText size={20} />
-                </div>
-
-                <div className="report-name">
-                  <strong>{report.name}</strong>
-
-                  <span>
-                    {report.type} · {report.date}
-                  </span>
-                </div>
-
-                <div
-                  className={`status ${
-                    report.status === "Normal" ? "normal" : "review"
-                  }`}
-                >
-                  <span></span>
-                  {report.status}
-                </div>
-
-                <button className="row-arrow">
-                  <ChevronRight size={17} />
-                </button>
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
+      </section>
     </div>
   );
 }

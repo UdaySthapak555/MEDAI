@@ -59,11 +59,30 @@ def classify_medical_report(data: dict) -> dict:
     # Overall classification
     # --------------------------------
 
-    if len(flags) == 0:
+    rule_flag_count = len(flags)
+    required_parameters = (
+        "hemoglobin",
+        "wbc",
+        "platelets",
+        "glucose",
+        "cholesterol",
+        "rbc",
+    )
+    incomplete = any(data.get(parameter) is None for parameter in required_parameters)
+
+    if incomplete:
+        flags.append(
+            "One or more values are missing or use an unsupported or ambiguous unit; "
+            "review is needed and interpretation is incomplete."
+        )
+        status = "REVIEW"
+        confidence = 0.82
+
+    elif rule_flag_count == 0:
         status = "NORMAL"
         confidence = 0.92
 
-    elif len(flags) <= 2:
+    elif rule_flag_count <= 2:
         status = "REVIEW"
         confidence = 0.82
 

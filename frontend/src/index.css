@@ -1,9 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
 
 :root {
-  font-family: "DM Sans", sans-serif;
-  color: #e8f0f7;
-  background: #070b11;
+  font-family: "DM Sans", Arial, sans-serif;
+  color: #28231f;
+  background: #fff4e9;
+  --color-orange: #ff5a1f;
+  --color-yellow: #ffca4e;
+  --color-warm: #fff4e9;
+  --color-white: #ffffff;
+  --color-ink: #28231f;
+  --color-muted: #79716b;
+  --color-border: #efe5dc;
+  --radius-card: 20px;
+  --shadow-card: 0 12px 34px rgba(75, 48, 28, 0.055);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -15,6 +24,7 @@
 html {
   min-width: 320px;
   min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -22,12 +32,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    radial-gradient(
-      circle at 75% 5%,
-      rgba(30, 166, 255, 0.08),
-      transparent 28%
-    ),
-    #070b11;
+    radial-gradient(ellipse at 92% 0%, rgba(255, 202, 78, 0.13), transparent 30%),
+    var(--color-warm);
 }
 
 button {
@@ -35,6 +41,37 @@ button {
 }
 
 button,
-input {
-  outline: none;
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(255, 90, 31, 0.55);
+  outline-offset: 3px;
+}
+
+::selection {
+  color: #54210f;
+  background: rgba(255, 202, 78, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
